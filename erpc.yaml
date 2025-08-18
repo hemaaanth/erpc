@@ -31,62 +31,29 @@ metrics:
   port: 4001
 projects:
   - id: main
-    networks:
-      - architecture: evm
-        evm:
-          chainId: 1
-        failsafe:
-          timeout:
-            duration: 30s
-          retry:
-            maxAttempts: 3
-            delay: 500ms
-            backoffMaxDelay: 10s
-            backoffFactor: 0.3
-            jitter: 500ms
-          hedge:
-            delay: 3000ms
-            maxCount: 2
-      - architecture: evm
-        evm:
-          chainId: 42161
-        failsafe:
-          timeout:
-            duration: 30s
-          retry:
-            maxAttempts: 5
-            delay: 500ms
-            backoffMaxDelay: 10s
-            backoffFactor: 0.3
-            jitter: 200ms
-          hedge:
-            delay: 1000ms
-            maxCount: 2
     upstreams:
       - id: public-endpoints
         endpoint: repository://evm-public-endpoints.erpc.cloud
         rateLimitBudget: global
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
           retry:
             maxAttempts: 2
             delay: 1000ms
             backoffMaxDelay: 10s
             backoffFactor: 0.3
-            jitter: 500ms
       - id: superchain-endpoints
         endpoint: superchain://github.com/ethereum-optimism/superchain-registry/main/chainList.json
         rateLimitBudget: global
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
           retry:
             maxAttempts: 2
             delay: 1000ms
             backoffMaxDelay: 10s
             backoffFactor: 0.3
-            jitter: 500ms
 rateLimiters:
   budgets:
     - id: global
