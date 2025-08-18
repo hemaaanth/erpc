@@ -21,8 +21,6 @@ database:
         empty: allow
         connector: redis-cache
         ttl: 10s
-  #  Cache is disabled by default. You can also disable it by uncommenting the following line
-  #  evmJsonRpcCache: ~ 
 server:
   httpHostV4: 0.0.0.0
   httpPortV4: 4000

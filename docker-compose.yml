@@ -3,7 +3,7 @@ services:
     platform: linux/amd64
     image: ghcr.io/erpc/erpc:main
     volumes:
-      - ./erpc.yaml:/erpc.yaml
+      - ./erpc.yaml:/erpc.yaml:ro
     networks: [dokploy-network, erpc]
 
   monitoring:
