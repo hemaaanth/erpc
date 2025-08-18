@@ -9,7 +9,7 @@ services:
   monitoring:
     build: ./monitoring
     environment:
-      - SERVICE_ENDPOINT=host.docker.internal
+      - SERVICE_ENDPOINT=erpc
       - SERVICE_PORT=4001
     volumes:
       - ./monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini:ro
