@@ -14,8 +14,8 @@ services:
     volumes:
       - ./monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini:ro
       - ./monitoring/grafana/dashboards:/etc/grafana/dashboards:ro
-      - prometheus_data:/prometheus
-      - grafana_data:/var/lib/grafana
+      - prometheus_data:/prometheus:rw
+      - grafana_data:/var/lib/grafana:rw
     networks: [dokploy-network, erpc]
 
   redis:
