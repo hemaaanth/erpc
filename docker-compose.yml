@@ -12,8 +12,8 @@ services:
       - SERVICE_ENDPOINT=host.docker.internal
       - SERVICE_PORT=4001
     volumes:
-      - ./monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
-      - ./monitoring/grafana/dashboards:/etc/grafana/dashboards
+      - ./monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini:ro
+      - ./monitoring/grafana/dashboards:/etc/grafana/dashboards:ro
       - prometheus_data:/prometheus
       - grafana_data:/var/lib/grafana
     networks: [dokploy-network, erpc]
