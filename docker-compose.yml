@@ -5,6 +5,15 @@ services:
     volumes:
       - ./erpc.yaml:/erpc.yaml:ro
     networks: [dokploy-network, erpc]
+    environment:
+      - ERPC_SECRET=${ERPC_SECRET}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        mode: "non-blocking"
+        max-buffer-size: "4m"
 
   monitoring:
     build: ./monitoring
@@ -17,11 +26,25 @@ services:
       - prometheus_data:/prometheus:rw
       - grafana_data:/var/lib/grafana:rw
     networks: [dokploy-network, erpc]
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        mode: "non-blocking"
+        max-buffer-size: "4m"
 
   redis:
     image: redis:latest
     restart: always
     networks: [erpc]
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        mode: "non-blocking"
+        max-buffer-size: "4m"
 
   # jaeger:
   #   container_name: erpc-jaeger

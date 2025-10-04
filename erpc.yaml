@@ -31,6 +31,12 @@ metrics:
   port: 4001
 projects:
   - id: main
+    auth:
+      strategies:
+        - type: secret
+          secret:
+            id: default
+            value: "${ERPC_SECRET}"
     upstreams:
       - id: public-endpoints
         endpoint: repository://evm-public-endpoints.erpc.cloud
@@ -59,5 +65,5 @@ rateLimiters:
     - id: global
       rules:
         - method: '*'
-          maxCount: 10000
+          maxCount: 50
           period: 1s
